@@ -1,0 +1,49 @@
+package lotto.domain.lottonumber;
+
+import lotto.domain.exception.DuplicateLottoNumbersException;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+
+public class LottoTicket {
+
+    private static final int SIZE_OF_LOTTO_TICKETS = 6;
+    private final List<LottoNumber> lottoNumbers;
+
+    private LottoTicket(final List<LottoNumber> lottoNumbers) {
+        if (hasDuplicateNumbersIn(lottoNumbers)) {
+            throw new DuplicateLottoNumbersException();
+        }
+
+        this.lottoNumbers = lottoNumbers;
+    }
+
+    private boolean hasDuplicateNumbersIn(final List<LottoNumber> lottoNumbers) {
+        Set<LottoNumber> lottoNumberSet = new HashSet<>(lottoNumbers);
+        return lottoNumberSet.size() != SIZE_OF_LOTTO_TICKETS;
+    }
+
+    public static LottoTicket of(final List<LottoNumber> lottoNumbers) {
+        return new LottoTicket(lottoNumbers);
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        final LottoTicket that = (LottoTicket) o;
+        return Objects.equals(lottoNumbers, that.lottoNumbers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(lottoNumbers);
+    }
+
+    @Override
+    public String toString() {
+        return lottoNumbers.toString();
+    }
+}
