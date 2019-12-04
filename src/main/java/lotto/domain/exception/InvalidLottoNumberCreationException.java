@@ -1,6 +1,6 @@
 package lotto.domain.exception;
 
-import lotto.domain.lottonumber.LottoNumber;
+import lotto.domain.lottoticket.LottoNumber;
 
 public class InvalidLottoNumberCreationException extends IllegalArgumentException {
 

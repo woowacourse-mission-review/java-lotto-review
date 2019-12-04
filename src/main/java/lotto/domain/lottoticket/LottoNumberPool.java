@@ -1,4 +1,4 @@
-package lotto.domain.lottonumber;
+package lotto.domain.lottoticket;
 
 import java.util.HashMap;
 import java.util.Map;
