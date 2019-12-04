@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.lottonumber;
 
 import lotto.domain.exception.InvalidLottoNumberCreationException;
 
@@ -23,7 +23,7 @@ public class LottoNumber {
         return number < MIN_VALUE || number > MAX_VALUE;
     }
 
-    public static LottoNumber from(final int number) {
+    static LottoNumber from(final int number) {
         return new LottoNumber(number);
     }
 

@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.lottonumber;
 
 import lotto.domain.exception.InvalidLottoNumberCreationException;
 import org.junit.jupiter.api.Test;
