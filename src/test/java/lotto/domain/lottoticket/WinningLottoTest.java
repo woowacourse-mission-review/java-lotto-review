@@ -1,6 +1,8 @@
 package lotto.domain.lottoticket;
 
 import lotto.domain.exception.BonusBallCreationException;
+import lotto.domain.lottoticket.lottonumber.LottoNumber;
+import lotto.domain.lottoticket.lottonumber.LottoNumberPool;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

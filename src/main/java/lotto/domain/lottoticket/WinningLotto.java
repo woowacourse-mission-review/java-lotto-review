@@ -1,6 +1,7 @@
 package lotto.domain.lottoticket;
 
 import lotto.domain.exception.BonusBallCreationException;
+import lotto.domain.lottoticket.lottonumber.LottoNumber;
 
 import java.util.Objects;
 

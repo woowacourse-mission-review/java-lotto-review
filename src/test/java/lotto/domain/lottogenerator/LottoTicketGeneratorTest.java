@@ -1,9 +1,9 @@
 package lotto.domain.lottogenerator;
 
-import lotto.domain.lottoticket.LottoNumber;
-import lotto.domain.lottoticket.LottoNumberPool;
 import lotto.domain.lottoticket.LottoTicket;
 import lotto.domain.lottoticket.LottoTickets;
+import lotto.domain.lottoticket.lottonumber.LottoNumber;
+import lotto.domain.lottoticket.lottonumber.LottoNumberPool;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

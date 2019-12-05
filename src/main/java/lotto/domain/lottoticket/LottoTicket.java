@@ -1,6 +1,7 @@
 package lotto.domain.lottoticket;
 
 import lotto.domain.exception.DuplicateLottoNumbersException;
+import lotto.domain.lottoticket.lottonumber.LottoNumber;
 
 import java.util.HashSet;
 import java.util.List;

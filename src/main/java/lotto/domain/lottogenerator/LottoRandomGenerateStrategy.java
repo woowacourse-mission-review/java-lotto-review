@@ -1,8 +1,8 @@
 package lotto.domain.lottogenerator;
 
-import lotto.domain.lottoticket.LottoNumber;
-import lotto.domain.lottoticket.LottoNumberPool;
 import lotto.domain.lottoticket.LottoTicket;
+import lotto.domain.lottoticket.lottonumber.LottoNumber;
+import lotto.domain.lottoticket.lottonumber.LottoNumberPool;
 
 import java.util.Collections;
 import java.util.List;
