@@ -32,4 +32,11 @@ class LottoTicketsTest {
 
         assertThat(lottoTickets).isEqualTo(LottoTickets.of(tickets));
     }
+
+    @Test
+    void size() {
+        LottoTickets lottoTickets = LottoTickets.of(tickets);
+
+        assertThat(lottoTickets.size()).isEqualTo(3);
+    }
 }
