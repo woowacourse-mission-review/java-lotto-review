@@ -29,6 +29,10 @@ public class LottoTicket {
         return new LottoTicket(lottoNumbers);
     }
 
+    public boolean contains(final LottoNumber lottoNumber) {
+        return lottoNumbers.contains(lottoNumber);
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;

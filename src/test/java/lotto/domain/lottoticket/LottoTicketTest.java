@@ -43,4 +43,14 @@ class LottoTicketTest {
 
         assertThat(exception.getMessage()).isEqualTo(DuplicateLottoNumbersException.DUPLICATE_LOTTO_NUMBERS_MESSAGE);
     }
+
+    @Test
+    void contains() {
+        LottoTicket lottoTicket = LottoTicket.of(properLottoNumbers);
+
+        for (LottoNumber lottoNumber : properLottoNumbers) {
+            assertThat(lottoTicket.contains(lottoNumber)).isTrue();
+        }
+        assertThat(lottoTicket.contains(LottoNumberPool.get(7))).isFalse();
+    }
 }
