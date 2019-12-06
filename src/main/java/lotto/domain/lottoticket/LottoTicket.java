@@ -14,6 +14,8 @@ public class LottoTicket {
     private final List<LottoNumber> lottoNumbers;
 
     private LottoTicket(final List<LottoNumber> lottoNumbers) {
+        // TODO: 05/12/2019 Collections.sort()
+
         if (hasDuplicateNumbersIn(lottoNumbers)) {
             throw new DuplicateLottoNumbersException();
         }

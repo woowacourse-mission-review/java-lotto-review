@@ -1,14 +1,18 @@
 package lotto.domain.lottoticket;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class LottoTickets {
 
-    private final List<LottoTicket> tickets;
+    private final List<LottoTicket> tickets = new ArrayList<>();
+
+    public LottoTickets() {
+    }
 
     private LottoTickets(final List<LottoTicket> tickets) {
-        this.tickets = tickets;
+        this.tickets.addAll(tickets);
     }
 
     public static LottoTickets of(final List<LottoTicket> tickets) {
@@ -17,6 +21,15 @@ public class LottoTickets {
 
     public int size() {
         return tickets.size();
+    }
+
+    public void append(List<LottoTicket> tickets) {
+        this.tickets.addAll(tickets);
+    }
+
+    public LottoTickets append(LottoTicket ticket) {
+        this.tickets.add(ticket);
+        return this;
     }
 
     @Override
