@@ -1,6 +1,7 @@
 package lotto.domain.lottoticket;
 
 import lotto.domain.exception.DuplicateLottoNumbersException;
+import lotto.domain.exception.IllegalLottoSizeException;
 import lotto.domain.lottoticket.lottonumber.LottoNumber;
 
 import java.util.HashSet;
@@ -16,11 +17,19 @@ public class LottoTicket {
     private LottoTicket(final List<LottoNumber> lottoNumbers) {
         // TODO: 05/12/2019 Collections.sort()
 
+        if (mismatchLottoSize(lottoNumbers)) {
+            throw new IllegalLottoSizeException();
+        }
+
         if (hasDuplicateNumbersIn(lottoNumbers)) {
             throw new DuplicateLottoNumbersException();
         }
 
         this.lottoNumbers = lottoNumbers;
+    }
+
+    private boolean mismatchLottoSize(final List<LottoNumber> lottoNumbers) {
+        return lottoNumbers.size() != SIZE_OF_LOTTO_TICKETS;
     }
 
     private boolean hasDuplicateNumbersIn(final List<LottoNumber> lottoNumbers) {
