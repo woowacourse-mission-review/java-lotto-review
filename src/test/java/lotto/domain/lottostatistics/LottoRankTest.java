@@ -1,22 +1,33 @@
 package lotto.domain.lottostatistics;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoRankTest {
 
-    @Test
-    void values() {
-        assertThat(LottoRank.valueOf(6, true)).isEqualByComparingTo(LottoRank.FIRST);
-        assertThat(LottoRank.valueOf(5, true)).isEqualByComparingTo(LottoRank.SECOND);
-        assertThat(LottoRank.valueOf(5, false)).isEqualByComparingTo(LottoRank.THIRD);
-        assertThat(LottoRank.valueOf(4, true)).isEqualByComparingTo(LottoRank.FOURTH);
-        assertThat(LottoRank.valueOf(3, true)).isEqualByComparingTo(LottoRank.FIFTH);
+    @ParameterizedTest
+    @MethodSource("generateMatchingCountAndBonusBall")
+    void valueOf(final int matchingCount, final boolean bonusBall, final LottoRank lottoRank) {
+        assertThat(LottoRank.valueOf(matchingCount, bonusBall)).isEqualByComparingTo(lottoRank);
+    }
 
-        assertThat(LottoRank.valueOf(2, true)).isEqualByComparingTo(LottoRank.NONE);
-        assertThat(LottoRank.valueOf(1, true)).isEqualByComparingTo(LottoRank.NONE);
-        assertThat(LottoRank.valueOf(0, true)).isEqualByComparingTo(LottoRank.NONE);
+    private static Stream<Arguments> generateMatchingCountAndBonusBall() {
+        return Stream.of(
+                Arguments.of(6, true, LottoRank.FIRST),
+                Arguments.of(5, true, LottoRank.SECOND),
+                Arguments.of(5, false, LottoRank.THIRD),
+                Arguments.of(4, true, LottoRank.FOURTH),
+                Arguments.of(3, true, LottoRank.FIFTH),
+                Arguments.of(2, true, LottoRank.NONE),
+                Arguments.of(1, true, LottoRank.NONE),
+                Arguments.of(0, true, LottoRank.NONE)
+        );
     }
 
     @Test
