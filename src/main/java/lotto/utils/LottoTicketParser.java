@@ -3,7 +3,6 @@ package lotto.utils;
 import lotto.domain.lottoticket.LottoTicket;
 import lotto.domain.lottoticket.lottonumber.LottoNumber;
 import lotto.domain.lottoticket.lottonumber.LottoNumberPool;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,9 +16,7 @@ public class LottoTicketParser {
     }
 
     public static LottoTicket parseToLottoTicket(final String input) {
-        if (StringUtils.isEmpty(input)) {
-            throw new IllegalArgumentException();
-        }
+        EmptyChecker.check(input);
 
         List<LottoNumber> lottoNumbers = parseLottoNumbers(input);
         return LottoTicket.of(lottoNumbers);
