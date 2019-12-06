@@ -23,4 +23,8 @@ public class LottoPurchaseAmount {
     public static LottoPurchaseAmount from(final long amount) {
         return new LottoPurchaseAmount(amount);
     }
+
+    public long getAmount() {
+        return amount;
+    }
 }
