@@ -29,11 +29,6 @@ class LottoTicketParserTest {
     @ParameterizedTest
     @NullSource
     @EmptySource
-    void parseLottoTicket_null_or_empty(String input) {
-        assertThrows(IllegalArgumentException.class, () -> LottoTicketParser.parseToLottoTicket(input));
-    }
-
-    @ParameterizedTest
     @ValueSource(strings = {"q, 2, 3, 4, 5, 6", "1, 2, 3, 4, 5", "1, 1, 3, 4, 5, 6", "1, 2, 3, 4, 5, 46"})
     void parseLottoTicket_exceptions(String input) {
         assertThrows(IllegalArgumentException.class, () -> LottoTicketParser.parseToLottoTicket(input));
