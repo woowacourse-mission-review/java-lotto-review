@@ -9,11 +9,15 @@ public class LottoPurchaseAmount {
     private final long amount;
 
     private LottoPurchaseAmount(final long amount) {
-        if (amount < MIN_AMOUNT_OF_LOTTO_TICKET) {
+        if (isLowerThanMinAmount(amount)) {
             throw new LackOfLottoPurchaseAmountException();
         }
 
         this.amount = amount;
+    }
+
+    private boolean isLowerThanMinAmount(final long amount) {
+        return amount < MIN_AMOUNT_OF_LOTTO_TICKET;
     }
 
     public static LottoPurchaseAmount from(final long amount) {

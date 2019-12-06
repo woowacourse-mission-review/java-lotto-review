@@ -18,7 +18,7 @@ class LottoPurchaseAmountTest {
 
     @Test
     void create_LackOfLottoPurchaseAmountException() {
-        assertThrows(LackOfLottoPurchaseAmountException.class, () -> LottoPurchaseAmount.from(999L));
-        assertDoesNotThrow(() -> LottoPurchaseAmount.from(1000L));
+        assertThrows(LackOfLottoPurchaseAmountException.class, () -> LottoPurchaseAmount.from(LottoPurchaseAmount.MIN_AMOUNT_OF_LOTTO_TICKET - 1));
+        assertDoesNotThrow(() -> LottoPurchaseAmount.from(LottoPurchaseAmount.MIN_AMOUNT_OF_LOTTO_TICKET));
     }
 }
