@@ -18,13 +18,21 @@ public class InputView {
         System.out.println("수동으로 구매할 번호를 입력해 주세요.");
     }
 
-    public String inputBasicString() {
-        return SCANNER.nextLine();
+    public String inputWinningTicket() {
+        return inputWithMessage("지난 주 당첨 번호를 입력해 주세요.");
+    }
+
+    public String inputBonusBall() {
+        return inputWithMessage("보너스 볼을 입력해 주세요.");
     }
 
     private String inputWithMessage(final String message) {
         System.out.println(message);
 
         return inputBasicString();
+    }
+
+    public String inputBasicString() {
+        return SCANNER.nextLine();
     }
 }
