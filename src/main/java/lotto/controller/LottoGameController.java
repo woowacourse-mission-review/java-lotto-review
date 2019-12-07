@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.domain.LottoPurchaseAmount;
 import lotto.domain.SizeOfManualLotto;
+import lotto.domain.lottogenerator.LottoRandomGenerateStrategy;
 import lotto.domain.lottogenerator.LottoTicketGenerator;
 import lotto.domain.lottoticket.LottoTicket;
 import lotto.domain.lottoticket.LottoTickets;
@@ -26,6 +27,13 @@ public class LottoGameController {
             SizeOfManualLotto sizeOfManualLotto = inputSizeOfManualLotto();
 
             LottoTickets manualLottoTickets = inputManualLottoTickets(sizeOfManualLotto);
+
+            LottoTicketGenerator lottoTicketGenerator = LottoTicketGenerator.getInstance();
+            long sizeOfTicketsAvailable = lottoPurchaseAmount.calculateSizeOfTicketsAvailable();
+            long sizeOfAutoTicketsAvailable = sizeOfTicketsAvailable - sizeOfManualLotto.getSize();
+            LottoTickets autoTickets = lottoTicketGenerator.createLottoTickets(sizeOfAutoTicketsAvailable
+                    , new LottoRandomGenerateStrategy());
+
 
         } catch (IllegalArgumentException e) {
             outputView.showMessageOfException(e);
