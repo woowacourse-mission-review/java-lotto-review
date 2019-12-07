@@ -1,17 +1,14 @@
 package lotto.domain;
 
+import lotto.LottoNoTestUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static lotto.domain.DuplicatedLottoNoException.DUPLICATED_LOTTO_NO_EXCEPTION_MESSAGE;
 import static lotto.domain.InvalidLottoNoSizeException.INVALID_LOTTO_NO_SIZE_EXCEPTION_MESSAGE;
 import static org.junit.jupiter.api.Assertions.*;
 
-class LottoTest {
+class LottoTest extends LottoNoTestUtils {
 
     @DisplayName("로또 정상 생성")
     @Test
@@ -55,11 +52,5 @@ class LottoTest {
     void not_contains_certain_lotto_no() {
         Lotto lotto = Lotto.of(generateLottoNoList(1, 2, 3, 4, 5, 6));
         assertFalse(lotto.contains(LottoNo.of(7)));
-    }
-
-    private List<LottoNo> generateLottoNoList(int... lottoNo) {
-        return Arrays.stream(lottoNo)
-                .mapToObj(LottoNo::of)
-                .collect(Collectors.toList());
     }
 }
