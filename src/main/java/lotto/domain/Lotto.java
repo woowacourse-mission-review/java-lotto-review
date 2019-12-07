@@ -32,7 +32,13 @@ public class Lotto {
         }
     }
 
-    public boolean contains(LottoNo lottoNo) {
+    public boolean contains(final LottoNo lottoNo) {
         return lottoNos.contains(lottoNo);
+    }
+
+    int getMatchCount(final Lotto lotto) {
+        return Math.toIntExact(lottoNos.stream()
+                .filter(lotto::contains)
+                .count());
     }
 }

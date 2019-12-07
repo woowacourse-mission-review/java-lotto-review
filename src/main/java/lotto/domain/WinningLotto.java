@@ -22,4 +22,12 @@ public class WinningLotto {
             throw new WinningNoContainsBonusNoException();
         }
     }
+
+    public int getMatchCount(final Lotto lotto) {
+        return winningNo.getMatchCount(lotto);
+    }
+
+    public boolean matchBonusNo(final Lotto lotto) {
+        return lotto.contains(bonusNo);
+    }
 }
