@@ -1,11 +1,13 @@
 package lotto.domain;
 
 import lotto.LottoNoTestUtils;
+import lotto.exception.DuplicatedLottoNoException;
+import lotto.exception.InvalidLottoNoSizeException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static lotto.domain.DuplicatedLottoNoException.DUPLICATED_LOTTO_NO_EXCEPTION_MESSAGE;
-import static lotto.domain.InvalidLottoNoSizeException.INVALID_LOTTO_NO_SIZE_EXCEPTION_MESSAGE;
+import static lotto.exception.DuplicatedLottoNoException.DUPLICATED_LOTTO_NO_EXCEPTION_MESSAGE;
+import static lotto.exception.InvalidLottoNoSizeException.INVALID_LOTTO_NO_SIZE_EXCEPTION_MESSAGE;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LottoTest extends LottoNoTestUtils {

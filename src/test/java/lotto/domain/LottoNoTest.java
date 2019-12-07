@@ -1,11 +1,12 @@
 package lotto.domain;
 
+import lotto.exception.InvalidRangeException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static lotto.domain.InvalidRangeException.INVALID_RANGE_EXCEPTION_MESSAGE;
 import static lotto.domain.LottoNo.MAX_LOTTO_NO;
 import static lotto.domain.LottoNo.MIN_LOTTO_NO;
+import static lotto.exception.InvalidRangeException.INVALID_RANGE_EXCEPTION_MESSAGE;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LottoNoTest {

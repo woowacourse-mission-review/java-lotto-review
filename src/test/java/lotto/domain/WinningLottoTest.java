@@ -1,10 +1,11 @@
 package lotto.domain;
 
 import lotto.LottoNoTestUtils;
+import lotto.exception.WinningNoContainsBonusNoException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static lotto.domain.WinningNoContainsBonusNoException.WINNING_NO_CONTAINS_BONUS_NO_EXCEPTION_MESSAGE;
+import static lotto.exception.WinningNoContainsBonusNoException.WINNING_NO_CONTAINS_BONUS_NO_EXCEPTION_MESSAGE;
 import static org.junit.jupiter.api.Assertions.*;
 
 class WinningLottoTest extends LottoNoTestUtils {

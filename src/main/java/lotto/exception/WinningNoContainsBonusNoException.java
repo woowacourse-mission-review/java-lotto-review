@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.exception;
 
 public class WinningNoContainsBonusNoException extends RuntimeException {
 

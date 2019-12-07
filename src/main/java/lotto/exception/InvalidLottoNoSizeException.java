@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.exception;
 
 import static lotto.domain.Lotto.LOTTO_NO_SIZE;
 

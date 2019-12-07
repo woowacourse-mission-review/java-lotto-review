@@ -1,13 +1,15 @@
 package lotto.domain;
 
 import com.google.common.collect.Sets;
+import lotto.exception.DuplicatedLottoNoException;
+import lotto.exception.InvalidLottoNoSizeException;
 
 import java.util.List;
 
 public class Lotto {
 
     static final int LOTTO_PRICE = 1000;
-    static final int LOTTO_NO_SIZE = 6;
+    public static final int LOTTO_NO_SIZE = 6;
 
     private final List<LottoNo> lottoNos;
 

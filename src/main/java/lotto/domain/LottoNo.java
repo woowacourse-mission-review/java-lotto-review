@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import com.google.common.collect.Maps;
+import lotto.exception.InvalidRangeException;
 
 import java.util.Map;
 import java.util.Objects;

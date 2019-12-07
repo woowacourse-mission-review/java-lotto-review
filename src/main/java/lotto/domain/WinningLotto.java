@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.exception.WinningNoContainsBonusNoException;
+
 import java.util.List;
 
 public class WinningLotto {
