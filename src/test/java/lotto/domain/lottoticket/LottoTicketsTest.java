@@ -59,6 +59,14 @@ class LottoTicketsTest {
     }
 
     @Test
+    void append_lottoTickets() {
+        LottoTickets lottoTickets = LottoTickets.of(tickets);
+        lottoTickets.append(LottoTickets.of(tickets));
+
+        assertThat(lottoTickets.size()).isEqualTo(6);
+    }
+
+    @Test
     void append_one_ticket() {
         LottoTickets lottoTickets = LottoTickets.of(tickets);
         LottoTickets lottoTickets2 = lottoTickets.append(ticket);

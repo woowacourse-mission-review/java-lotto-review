@@ -29,6 +29,10 @@ public class LottoTickets {
         this.tickets.addAll(tickets);
     }
 
+    public void append(final LottoTickets lottoTickets) {
+        append(lottoTickets.tickets);
+    }
+
     public LottoTickets append(LottoTicket ticket) {
         this.tickets.add(ticket);
         return this;
@@ -58,8 +62,9 @@ public class LottoTickets {
 
     @Override
     public String toString() {
-        return "LottoTickets{" +
-                "tickets=" + tickets +
-                '}';
+        StringBuilder stringBuilder = new StringBuilder();
+        tickets.forEach(ticket -> stringBuilder.append(ticket.toString())
+                .append("\n"));
+        return stringBuilder.toString();
     }
 }

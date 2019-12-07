@@ -34,7 +34,7 @@ class PurchasedLottoTicketsTest {
     }
 
     @Test
-    void appendManualLottoTickets_and_check_size() {
+    void appendManualLottoTicketList_and_check_size() {
         PurchasedLottoTickets purchasedLottoTickets = new PurchasedLottoTickets();
         purchasedLottoTickets.appendManualLottoTickets(manualTickets);
 
@@ -43,9 +43,27 @@ class PurchasedLottoTicketsTest {
     }
 
     @Test
-    void appendAutoLottoTickets_and_check_size() {
+    void appendAutoLottoTicketList_and_check_size() {
         PurchasedLottoTickets purchasedLottoTickets = new PurchasedLottoTickets();
         purchasedLottoTickets.appendAutoLottoTickets(autoTickets);
+
+        assertThat(purchasedLottoTickets.sizeOfManualLottoTickets()).isEqualTo(0);
+        assertThat(purchasedLottoTickets.sizeOfAutoLottoTickets()).isEqualTo(2);
+    }
+
+    @Test
+    void appendManualLottoTickets_and_check_size() {
+        PurchasedLottoTickets purchasedLottoTickets = new PurchasedLottoTickets();
+        purchasedLottoTickets.appendManualLottoTickets(LottoTickets.of(manualTickets));
+
+        assertThat(purchasedLottoTickets.sizeOfManualLottoTickets()).isEqualTo(3);
+        assertThat(purchasedLottoTickets.sizeOfAutoLottoTickets()).isEqualTo(0);
+    }
+
+    @Test
+    void appendAutoLottoTickets_and_check_size() {
+        PurchasedLottoTickets purchasedLottoTickets = new PurchasedLottoTickets();
+        purchasedLottoTickets.appendAutoLottoTickets(LottoTickets.of(autoTickets));
 
         assertThat(purchasedLottoTickets.sizeOfManualLottoTickets()).isEqualTo(0);
         assertThat(purchasedLottoTickets.sizeOfAutoLottoTickets()).isEqualTo(2);
