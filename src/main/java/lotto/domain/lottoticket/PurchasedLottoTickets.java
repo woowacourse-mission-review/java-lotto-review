@@ -1,5 +1,8 @@
 package lotto.domain.lottoticket;
 
+import lotto.domain.lottostatistics.LottoRank;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class PurchasedLottoTickets {
@@ -34,6 +37,20 @@ public class PurchasedLottoTickets {
 
     public int sizeOfAutoLottoTickets() {
         return autoLottoTickets.size();
+    }
+
+    public List<LottoRank> matchWith(final WinningLotto winningLotto) {
+        List<LottoRank> ranksOfManualLotto = manualLottoTickets.matchWith(winningLotto);
+        List<LottoRank> ranksOfAutoLotto = autoLottoTickets.matchWith(winningLotto);
+
+        return joinRanks(ranksOfManualLotto, ranksOfAutoLotto);
+    }
+
+    private List<LottoRank> joinRanks(final List<LottoRank> ranksOfManualLotto, final List<LottoRank> ranksOfAutoLotto) {
+        List<LottoRank> resultsRanks = new ArrayList<>(ranksOfManualLotto);
+        resultsRanks.addAll(ranksOfAutoLotto);
+
+        return resultsRanks;
     }
 
     @Override

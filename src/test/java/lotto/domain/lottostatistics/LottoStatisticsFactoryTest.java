@@ -2,6 +2,7 @@ package lotto.domain.lottostatistics;
 
 import lotto.domain.lottoticket.LottoTicket;
 import lotto.domain.lottoticket.LottoTickets;
+import lotto.domain.lottoticket.PurchasedLottoTickets;
 import lotto.domain.lottoticket.WinningLotto;
 import lotto.domain.lottoticket.lottonumber.LottoNumber;
 import lotto.domain.lottoticket.lottonumber.LottoNumberPool;
@@ -16,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class LottoStatisticsFactoryTest {
 
     WinningLotto winningLotto;
-    LottoTickets lottoTickets;
+    PurchasedLottoTickets purchasedLottoTickets;
 
     @BeforeEach
     void setUp() {
@@ -30,7 +31,10 @@ class LottoStatisticsFactoryTest {
         List<LottoNumber> numbers = Arrays.asList(LottoNumberPool.get(1), LottoNumberPool.get(2), LottoNumberPool.get(3)
                 , LottoNumberPool.get(4), LottoNumberPool.get(5), LottoNumberPool.get(7));
         List<LottoTicket> tickets = Arrays.asList(LottoTicket.of(numbers));
-        lottoTickets = LottoTickets.of(tickets);
+        LottoTickets lottoTickets = LottoTickets.of(tickets);
+
+        purchasedLottoTickets = new PurchasedLottoTickets();
+        purchasedLottoTickets.appendManualLottoTickets(lottoTickets);
     }
 
     @Test
@@ -45,7 +49,7 @@ class LottoStatisticsFactoryTest {
     void calculateStatisticsWith() {
         LottoStatisticsFactory lottoStatisticsFactory = LottoStatisticsFactory.getInstance();
 
-        LottoStatistics lottoStatistics = lottoStatisticsFactory.calculateStatisticsWith(winningLotto, lottoTickets);
+        LottoStatistics lottoStatistics = lottoStatisticsFactory.calculateStatisticsWith(winningLotto, purchasedLottoTickets);
 
         assertThat(lottoStatistics).isNotNull();
         assertThat(lottoStatistics.findWinningCountBy(LottoRank.FIRST)).isEqualTo(0L);

@@ -1,6 +1,6 @@
 package lotto.domain.lottostatistics;
 
-import lotto.domain.lottoticket.LottoTickets;
+import lotto.domain.lottoticket.PurchasedLottoTickets;
 import lotto.domain.lottoticket.WinningLotto;
 
 import java.util.Arrays;
@@ -19,8 +19,8 @@ public class LottoStatisticsFactory {
         return LazyHolder.INSTANCE;
     }
 
-    public LottoStatistics calculateStatisticsWith(WinningLotto winningLotto, LottoTickets lottoTickets) {
-        List<LottoRank> ranks = lottoTickets.matchWith(winningLotto);
+    public LottoStatistics calculateStatisticsWith(WinningLotto winningLotto, PurchasedLottoTickets purchasedLottoTickets) {
+        List<LottoRank> ranks = purchasedLottoTickets.matchWith(winningLotto);
 
         Map<LottoRank, Long> statistics = createStatisticsByCounting(ranks);
 

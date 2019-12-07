@@ -4,6 +4,8 @@ import lotto.domain.LottoPurchaseAmount;
 import lotto.domain.SizeOfManualLotto;
 import lotto.domain.lottogenerator.LottoRandomGenerateStrategy;
 import lotto.domain.lottogenerator.LottoTicketGenerator;
+import lotto.domain.lottostatistics.LottoStatistics;
+import lotto.domain.lottostatistics.LottoStatisticsFactory;
 import lotto.domain.lottoticket.LottoTicket;
 import lotto.domain.lottoticket.LottoTickets;
 import lotto.domain.lottoticket.PurchasedLottoTickets;
@@ -41,6 +43,9 @@ public class LottoGameController {
             String bonusBallInput = inputView.inputBonusBall();
             LottoNumber bonusBall = BasicLottoInputParser.parseLottoBonusBall(bonusBallInput);
             WinningLotto winningLotto = WinningLotto.of(winningLottoTicket, bonusBall);
+
+            LottoStatisticsFactory lottoStatisticsFactory = LottoStatisticsFactory.getInstance();
+            LottoStatistics lottoStatistics = lottoStatisticsFactory.calculateStatisticsWith(winningLotto, purchasedLottoTickets);
 
         } catch (IllegalArgumentException e) {
             outputView.showMessageOfException(e);
