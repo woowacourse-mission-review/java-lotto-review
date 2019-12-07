@@ -35,17 +35,10 @@ public class LottoGameController {
             LottoTickets autoTickets = generateAutoLottoTickets(lottoPurchaseAmount, sizeOfManualLotto);
 
             PurchasedLottoTickets purchasedLottoTickets = createPurchasedLottoTicketsBy(manualLottoTickets, autoTickets);
-
             outputView.show(purchasedLottoTickets);
 
-            String winningTicketInput = inputView.inputWinningTicket();
-            LottoTicket winningLottoTicket = LottoTicketParser.parseToLottoTicket(winningTicketInput);
-            String bonusBallInput = inputView.inputBonusBall();
-            LottoNumber bonusBall = BasicLottoInputParser.parseLottoBonusBall(bonusBallInput);
-            WinningLotto winningLotto = WinningLotto.of(winningLottoTicket, bonusBall);
-
-            LottoStatisticsFactory lottoStatisticsFactory = LottoStatisticsFactory.getInstance();
-            LottoStatistics lottoStatistics = lottoStatisticsFactory.calculateStatisticsWith(winningLotto, purchasedLottoTickets);
+            WinningLotto winningLotto = inputWinningLotto();
+            LottoStatistics lottoStatistics = createLottoStatistics(purchasedLottoTickets, winningLotto);
 
             outputView.show(lottoStatistics);
             outputView.showYieldOfLottoWith(lottoStatistics, lottoPurchaseAmount);
@@ -53,13 +46,6 @@ public class LottoGameController {
         } catch (IllegalArgumentException e) {
             outputView.showMessageOfException(e);
         }
-    }
-
-    private PurchasedLottoTickets createPurchasedLottoTicketsBy(final LottoTickets manualLottoTickets, final LottoTickets autoTickets) {
-        PurchasedLottoTickets purchasedLottoTickets = new PurchasedLottoTickets();
-        purchasedLottoTickets.appendManualLottoTickets(manualLottoTickets);
-        purchasedLottoTickets.appendAutoLottoTickets(autoTickets);
-        return purchasedLottoTickets;
     }
 
     private LottoPurchaseAmount inputLottoPurchaseAmount() {
@@ -97,5 +83,35 @@ public class LottoGameController {
             , final SizeOfManualLotto sizeOfManualLotto) {
         long sizeOfTicketsAvailable = lottoPurchaseAmount.calculateSizeOfTicketsAvailable();
         return sizeOfTicketsAvailable - sizeOfManualLotto.getSize();
+    }
+
+    private PurchasedLottoTickets createPurchasedLottoTicketsBy(final LottoTickets manualLottoTickets, final LottoTickets autoTickets) {
+        PurchasedLottoTickets purchasedLottoTickets = new PurchasedLottoTickets();
+        purchasedLottoTickets.appendManualLottoTickets(manualLottoTickets);
+        purchasedLottoTickets.appendAutoLottoTickets(autoTickets);
+
+        return purchasedLottoTickets;
+    }
+
+    private WinningLotto inputWinningLotto() {
+        LottoTicket winningLottoTicket = inputWinningTicket();
+        LottoNumber bonusBall = inputBonusBall();
+
+        return WinningLotto.of(winningLottoTicket, bonusBall);
+    }
+
+    private LottoTicket inputWinningTicket() {
+        String winningTicketInput = inputView.inputWinningTicket();
+        return LottoTicketParser.parseToLottoTicket(winningTicketInput);
+    }
+
+    private LottoNumber inputBonusBall() {
+        String bonusBallInput = inputView.inputBonusBall();
+        return BasicLottoInputParser.parseLottoBonusBall(bonusBallInput);
+    }
+
+    private LottoStatistics createLottoStatistics(final PurchasedLottoTickets purchasedLottoTickets, final WinningLotto winningLotto) {
+        LottoStatisticsFactory lottoStatisticsFactory = LottoStatisticsFactory.getInstance();
+        return lottoStatisticsFactory.calculateStatisticsWith(winningLotto, purchasedLottoTickets);
     }
 }
