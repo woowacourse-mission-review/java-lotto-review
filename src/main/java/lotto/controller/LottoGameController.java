@@ -28,22 +28,22 @@ public class LottoGameController {
             SizeOfManualLotto sizeOfManualLotto = inputSizeOfManualLotto();
 
             LottoTickets manualLottoTickets = inputManualLottoTickets(sizeOfManualLotto);
+            LottoTickets autoTickets = generateAutoLottoTickets(lottoPurchaseAmount, sizeOfManualLotto);
 
-            LottoTicketGenerator lottoTicketGenerator = LottoTicketGenerator.getInstance();
-            long sizeOfTicketsAvailable = lottoPurchaseAmount.calculateSizeOfTicketsAvailable();
-            long sizeOfAutoTicketsAvailable = sizeOfTicketsAvailable - sizeOfManualLotto.getSize();
-            LottoTickets autoTickets = lottoTicketGenerator.createLottoTickets(sizeOfAutoTicketsAvailable
-                    , new LottoRandomGenerateStrategy());
-
-            PurchasedLottoTickets purchasedLottoTickets = new PurchasedLottoTickets();
-            purchasedLottoTickets.appendManualLottoTickets(manualLottoTickets);
-            purchasedLottoTickets.appendAutoLottoTickets(autoTickets);
+            PurchasedLottoTickets purchasedLottoTickets = createPurchasedLottoTicketsBy(manualLottoTickets, autoTickets);
 
             outputView.showPurchasedLottoTickets(purchasedLottoTickets);
 
         } catch (IllegalArgumentException e) {
             outputView.showMessageOfException(e);
         }
+    }
+
+    private PurchasedLottoTickets createPurchasedLottoTicketsBy(final LottoTickets manualLottoTickets, final LottoTickets autoTickets) {
+        PurchasedLottoTickets purchasedLottoTickets = new PurchasedLottoTickets();
+        purchasedLottoTickets.appendManualLottoTickets(manualLottoTickets);
+        purchasedLottoTickets.appendAutoLottoTickets(autoTickets);
+        return purchasedLottoTickets;
     }
 
     private LottoPurchaseAmount inputLottoPurchaseAmount() {
@@ -67,5 +67,19 @@ public class LottoGameController {
             manualLottoTickets.append(manualLottoTicket);
         }
         return manualLottoTickets;
+    }
+
+    private LottoTickets generateAutoLottoTickets(final LottoPurchaseAmount lottoPurchaseAmount
+            , final SizeOfManualLotto sizeOfManualLotto) {
+        long sizeOfAutoTicketsAvailable = calculateSizeOfAutoTicketsAvailable(lottoPurchaseAmount, sizeOfManualLotto);
+
+        LottoTicketGenerator lottoTicketGenerator = LottoTicketGenerator.getInstance();
+        return lottoTicketGenerator.createLottoTickets(sizeOfAutoTicketsAvailable, new LottoRandomGenerateStrategy());
+    }
+
+    private long calculateSizeOfAutoTicketsAvailable(final LottoPurchaseAmount lottoPurchaseAmount
+            , final SizeOfManualLotto sizeOfManualLotto) {
+        long sizeOfTicketsAvailable = lottoPurchaseAmount.calculateSizeOfTicketsAvailable();
+        return sizeOfTicketsAvailable - sizeOfManualLotto.getSize();
     }
 }
