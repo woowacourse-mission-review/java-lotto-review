@@ -23,4 +23,8 @@ public class SizeOfManualLotto {
     public static SizeOfManualLotto from(final long size) {
         return new SizeOfManualLotto(size);
     }
+
+    public long getSize() {
+        return size;
+    }
 }
