@@ -17,7 +17,7 @@ public class LottoStatistics {
         return new LottoStatistics(statistics);
     }
 
-    public long findWinningCountBy(final LottoRank lottoRank) {
+    public long findMatchingCountBy(final LottoRank lottoRank) {
         return statistics.get(lottoRank);
     }
 

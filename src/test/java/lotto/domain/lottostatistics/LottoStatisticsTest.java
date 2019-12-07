@@ -32,14 +32,14 @@ class LottoStatisticsTest {
     }
 
     @Test
-    void findWinningCountBy() {
+    void findMatchingCountBy() {
         LottoStatistics lottoStatistics = LottoStatistics.from(statistics);
 
-        assertThat(lottoStatistics.findWinningCountBy(LottoRank.FIRST)).isEqualTo(0L);
-        assertThat(lottoStatistics.findWinningCountBy(LottoRank.SECOND)).isEqualTo(0L);
-        assertThat(lottoStatistics.findWinningCountBy(LottoRank.THIRD)).isEqualTo(0L);
-        assertThat(lottoStatistics.findWinningCountBy(LottoRank.FOURTH)).isEqualTo(0L);
-        assertThat(lottoStatistics.findWinningCountBy(LottoRank.FIFTH)).isEqualTo(1L);
+        assertThat(lottoStatistics.findMatchingCountBy(LottoRank.FIRST)).isEqualTo(0L);
+        assertThat(lottoStatistics.findMatchingCountBy(LottoRank.SECOND)).isEqualTo(0L);
+        assertThat(lottoStatistics.findMatchingCountBy(LottoRank.THIRD)).isEqualTo(0L);
+        assertThat(lottoStatistics.findMatchingCountBy(LottoRank.FOURTH)).isEqualTo(0L);
+        assertThat(lottoStatistics.findMatchingCountBy(LottoRank.FIFTH)).isEqualTo(1L);
     }
 
     @Test

@@ -36,7 +36,7 @@ public class LottoGameController {
 
             PurchasedLottoTickets purchasedLottoTickets = createPurchasedLottoTicketsBy(manualLottoTickets, autoTickets);
 
-            outputView.showPurchasedLottoTickets(purchasedLottoTickets);
+            outputView.show(purchasedLottoTickets);
 
             String winningTicketInput = inputView.inputWinningTicket();
             LottoTicket winningLottoTicket = LottoTicketParser.parseToLottoTicket(winningTicketInput);
@@ -46,6 +46,8 @@ public class LottoGameController {
 
             LottoStatisticsFactory lottoStatisticsFactory = LottoStatisticsFactory.getInstance();
             LottoStatistics lottoStatistics = lottoStatisticsFactory.calculateStatisticsWith(winningLotto, purchasedLottoTickets);
+
+            outputView.show(lottoStatistics);
 
         } catch (IllegalArgumentException e) {
             outputView.showMessageOfException(e);

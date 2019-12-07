@@ -52,10 +52,10 @@ class LottoStatisticsFactoryTest {
         LottoStatistics lottoStatistics = lottoStatisticsFactory.calculateStatisticsWith(winningLotto, purchasedLottoTickets);
 
         assertThat(lottoStatistics).isNotNull();
-        assertThat(lottoStatistics.findWinningCountBy(LottoRank.FIRST)).isEqualTo(0L);
-        assertThat(lottoStatistics.findWinningCountBy(LottoRank.SECOND)).isEqualTo(1L);
-        assertThat(lottoStatistics.findWinningCountBy(LottoRank.THIRD)).isEqualTo(0L);
-        assertThat(lottoStatistics.findWinningCountBy(LottoRank.FOURTH)).isEqualTo(0L);
-        assertThat(lottoStatistics.findWinningCountBy(LottoRank.FIFTH)).isEqualTo(0L);
+        assertThat(lottoStatistics.findMatchingCountBy(LottoRank.FIRST)).isEqualTo(0L);
+        assertThat(lottoStatistics.findMatchingCountBy(LottoRank.SECOND)).isEqualTo(1L);
+        assertThat(lottoStatistics.findMatchingCountBy(LottoRank.THIRD)).isEqualTo(0L);
+        assertThat(lottoStatistics.findMatchingCountBy(LottoRank.FOURTH)).isEqualTo(0L);
+        assertThat(lottoStatistics.findMatchingCountBy(LottoRank.FIFTH)).isEqualTo(0L);
     }
 }

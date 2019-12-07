@@ -43,6 +43,10 @@ public enum LottoRank {
         return this.matchingCount == matchingCount;
     }
 
+    public int getMatchingCount() {
+        return matchingCount;
+    }
+
     public long getPrize() {
         return prize;
     }
