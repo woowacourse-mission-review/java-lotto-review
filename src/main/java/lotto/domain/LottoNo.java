@@ -21,21 +21,14 @@ public class LottoNo {
     private final int lottoNo;
 
     private LottoNo(int lottoNo) {
-        validateRange(lottoNo);
         this.lottoNo = lottoNo;
     }
 
     public static LottoNo of(final int lottoNo) {
-        if (LOTTO_NO_POOL.containsKey(lottoNo)) {
+        if (lottoNo < MIN_LOTTO_NO || lottoNo > MAX_LOTTO_NO) {
             return LOTTO_NO_POOL.get(lottoNo);
         }
         throw new InvalidRangeException();
-    }
-
-    private void validateRange(final int lottoNo) {
-        if (MIN_LOTTO_NO > lottoNo || MAX_LOTTO_NO < lottoNo) {
-            throw new InvalidRangeException();
-        }
     }
 
     @Override
