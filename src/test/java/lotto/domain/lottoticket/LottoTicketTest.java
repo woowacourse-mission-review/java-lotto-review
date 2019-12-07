@@ -66,4 +66,15 @@ class LottoTicketTest {
         }
         assertThat(lottoTicket.contains(LottoNumberPool.get(7))).isFalse();
     }
+
+    @Test
+    void match() {
+        LottoTicket winningTicket = LottoTicket.of(properLottoNumbers);
+
+        List<LottoNumber> numbers = Arrays.asList(LottoNumberPool.get(1), LottoNumberPool.get(2), LottoNumberPool.get(3)
+                , LottoNumberPool.get(4), LottoNumberPool.get(5), LottoNumberPool.get(7));
+        LottoTicket lottoTicket = LottoTicket.of(numbers);
+
+        assertThat(winningTicket.match(lottoTicket)).isEqualTo(5);
+    }
 }

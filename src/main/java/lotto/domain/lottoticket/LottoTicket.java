@@ -45,6 +45,14 @@ public class LottoTicket {
         return lottoNumbers.contains(lottoNumber);
     }
 
+    public int match(final LottoTicket ticket) {
+        long count = lottoNumbers.stream()
+                .filter(ticket::contains)
+                .count();
+
+        return (int) count;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;

@@ -1,6 +1,7 @@
 package lotto.domain.lottostatistics;
 
 import lotto.domain.lottoticket.LottoTicket;
+import lotto.domain.lottoticket.LottoTickets;
 import lotto.domain.lottoticket.WinningLotto;
 import lotto.domain.lottoticket.lottonumber.LottoNumber;
 import lotto.domain.lottoticket.lottonumber.LottoNumberPool;
@@ -15,15 +16,21 @@ import static org.assertj.core.api.Assertions.assertThat;
 class LottoStatisticsFactoryTest {
 
     WinningLotto winningLotto;
+    LottoTickets lottoTickets;
 
     @BeforeEach
     void setUp() {
-        List<LottoNumber> lottoNumbers = Arrays.asList(LottoNumberPool.get(1), LottoNumberPool.get(2), LottoNumberPool.get(3)
+        List<LottoNumber> winningNumbers = Arrays.asList(LottoNumberPool.get(1), LottoNumberPool.get(2), LottoNumberPool.get(3)
                 , LottoNumberPool.get(4), LottoNumberPool.get(5), LottoNumberPool.get(6));
-        LottoTicket lottoTicket = LottoTicket.of(lottoNumbers);
+        LottoTicket winningTicket = LottoTicket.of(winningNumbers);
         LottoNumber bonusBall = LottoNumberPool.get(7);
 
-        winningLotto = WinningLotto.of(lottoTicket, bonusBall);
+        winningLotto = WinningLotto.of(winningTicket, bonusBall);
+
+        List<LottoNumber> numbers = Arrays.asList(LottoNumberPool.get(1), LottoNumberPool.get(2), LottoNumberPool.get(3)
+                , LottoNumberPool.get(4), LottoNumberPool.get(5), LottoNumberPool.get(7));
+        List<LottoTicket> tickets = Arrays.asList(LottoTicket.of(numbers));
+        lottoTickets = LottoTickets.of(tickets);
     }
 
     @Test
@@ -38,6 +45,13 @@ class LottoStatisticsFactoryTest {
     void calculateStatisticsWith() {
         LottoStatisticsFactory lottoStatisticsFactory = LottoStatisticsFactory.getInstance();
 
-        // TODO: 06/12/2019
+        LottoStatistics lottoStatistics = lottoStatisticsFactory.calculateStatisticsWith(winningLotto, lottoTickets);
+
+        assertThat(lottoStatistics).isNotNull();
+        assertThat(lottoStatistics.findWinningCountBy(LottoRank.FIRST)).isEqualTo(0L);
+        assertThat(lottoStatistics.findWinningCountBy(LottoRank.SECOND)).isEqualTo(1L);
+        assertThat(lottoStatistics.findWinningCountBy(LottoRank.THIRD)).isEqualTo(0L);
+        assertThat(lottoStatistics.findWinningCountBy(LottoRank.FOURTH)).isEqualTo(0L);
+        assertThat(lottoStatistics.findWinningCountBy(LottoRank.FIFTH)).isEqualTo(0L);
     }
 }

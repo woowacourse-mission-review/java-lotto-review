@@ -1,6 +1,7 @@
 package lotto.domain.lottoticket;
 
 import lotto.domain.exception.BonusBallCreationException;
+import lotto.domain.lottostatistics.LottoRank;
 import lotto.domain.lottoticket.lottonumber.LottoNumber;
 import lotto.domain.lottoticket.lottonumber.LottoNumberPool;
 import org.junit.jupiter.api.BeforeEach;
@@ -47,5 +48,16 @@ class WinningLottoTest {
         Exception exception = assertThrows(BonusBallCreationException.class, () -> WinningLotto.of(winningLottoTicket, illegalBonusBall));
 
         assertThat(exception.getMessage()).isEqualTo(BonusBallCreationException.BONUS_BALL_CREATION_MESSAGE);
+    }
+
+    @Test
+    void match() {
+        WinningLotto winningLotto = WinningLotto.of(winningLottoTicket, properBonusBall);
+
+        List<LottoNumber> lottoNumbers = Arrays.asList(LottoNumberPool.get(1), LottoNumberPool.get(2), LottoNumberPool.get(3)
+                , LottoNumberPool.get(4), LottoNumberPool.get(5), LottoNumberPool.get(7));
+        LottoTicket lottoTicket = LottoTicket.of(lottoNumbers);
+
+        assertThat(winningLotto.match(lottoTicket)).isEqualByComparingTo(LottoRank.SECOND);
     }
 }

@@ -1,5 +1,6 @@
 package lotto.domain.lottoticket;
 
+import lotto.domain.lottostatistics.LottoRank;
 import lotto.domain.lottoticket.lottonumber.LottoNumber;
 import lotto.domain.lottoticket.lottonumber.LottoNumberPool;
 import org.junit.jupiter.api.BeforeEach;
@@ -64,5 +65,26 @@ class LottoTicketsTest {
 
         assertThat(lottoTickets == lottoTickets2).isTrue();
         assertThat(lottoTickets2.size()).isEqualTo(4);
+    }
+
+    @Test
+    void matchWith() {
+        LottoTickets lottoTickets = LottoTickets.of(tickets);
+
+        WinningLotto winningLotto = createWinningLotto();
+
+        List<LottoRank> ranks = lottoTickets.matchWith(winningLotto);
+        assertThat(ranks.get(0)).isEqualByComparingTo(LottoRank.THIRD);
+        assertThat(ranks.get(1)).isEqualByComparingTo(LottoRank.THIRD);
+        assertThat(ranks.get(2)).isEqualByComparingTo(LottoRank.THIRD);
+    }
+
+    private WinningLotto createWinningLotto() {
+        List<LottoNumber> winningNumbers = Arrays.asList(LottoNumberPool.get(1), LottoNumberPool.get(2), LottoNumberPool.get(3)
+                , LottoNumberPool.get(4), LottoNumberPool.get(5), LottoNumberPool.get(8));
+        LottoTicket winningTicket = LottoTicket.of(winningNumbers);
+        LottoNumber bonusBall = LottoNumberPool.get(7);
+
+        return WinningLotto.of(winningTicket, bonusBall);
     }
 }

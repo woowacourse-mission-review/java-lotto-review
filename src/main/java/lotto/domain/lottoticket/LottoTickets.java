@@ -1,5 +1,7 @@
 package lotto.domain.lottoticket;
 
+import lotto.domain.lottostatistics.LottoRank;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -30,6 +32,15 @@ public class LottoTickets {
     public LottoTickets append(LottoTicket ticket) {
         this.tickets.add(ticket);
         return this;
+    }
+
+    public List<LottoRank> matchWith(final WinningLotto winningLotto) {
+        List<LottoRank> ranks = new ArrayList<>();
+        tickets.forEach(ticket -> {
+            LottoRank lottoRank = winningLotto.match(ticket);
+            ranks.add(lottoRank);
+        });
+        return ranks;
     }
 
     @Override
