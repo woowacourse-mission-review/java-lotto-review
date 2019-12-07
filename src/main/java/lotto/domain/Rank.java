@@ -23,8 +23,8 @@ public enum Rank {
             return MISS;
         }
 
-        if (SECOND.matchCount(countOfMatch) && matchBonus) {
-            return SECOND;
+        if (SECOND.matchCount(countOfMatch)) {
+            return (matchBonus ? SECOND : THIRD);
         }
 
         for (Rank rank : values()) {
