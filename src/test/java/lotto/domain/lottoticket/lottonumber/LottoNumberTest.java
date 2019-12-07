@@ -29,4 +29,14 @@ class LottoNumberTest {
 
         assertThat(exception.getMessage()).isEqualTo(InvalidLottoNumberCreationException.INVALID_LOTTO_NUMBER_CREATION_MESSAGE);
     }
+
+    @Test
+    void compareTo() {
+        LottoNumber lottoNumber1 = LottoNumber.from(1);
+        LottoNumber lottoNumber2 = LottoNumber.from(2);
+
+        assertThat(lottoNumber1.compareTo(lottoNumber2)).isEqualTo(-1);
+        assertThat(lottoNumber2.compareTo(lottoNumber1)).isEqualTo(1);
+        assertThat(lottoNumber1.compareTo(LottoNumber.from(1))).isEqualTo(0);
+    }
 }

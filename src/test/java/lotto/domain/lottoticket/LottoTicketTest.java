@@ -21,8 +21,8 @@ class LottoTicketTest {
 
     @BeforeEach
     void setUp() {
-        properLottoNumbers = Arrays.asList(LottoNumberPool.get(1), LottoNumberPool.get(2), LottoNumberPool.get(3)
-                , LottoNumberPool.get(4), LottoNumberPool.get(5), LottoNumberPool.get(6));
+        properLottoNumbers = Arrays.asList(LottoNumberPool.get(6), LottoNumberPool.get(5), LottoNumberPool.get(4)
+                , LottoNumberPool.get(3), LottoNumberPool.get(2), LottoNumberPool.get(1));
         duplicateLottoNumbers = Arrays.asList(LottoNumberPool.get(1), LottoNumberPool.get(1), LottoNumberPool.get(3)
                 , LottoNumberPool.get(4), LottoNumberPool.get(5), LottoNumberPool.get(6));
         illegalLottoSizeNumbers = Arrays.asList(LottoNumberPool.get(1), LottoNumberPool.get(2), LottoNumberPool.get(3)
@@ -41,6 +41,13 @@ class LottoTicketTest {
         LottoTicket lottoTicket = LottoTicket.of(properLottoNumbers);
 
         assertThat(lottoTicket).isEqualTo(LottoTicket.of(properLottoNumbers));
+    }
+
+    @Test
+    void sort() {
+        LottoTicket lottoTicket = LottoTicket.of(properLottoNumbers);
+
+        assertThat(lottoTicket.toString()).isEqualTo("[1, 2, 3, 4, 5, 6]");
     }
 
     @Test

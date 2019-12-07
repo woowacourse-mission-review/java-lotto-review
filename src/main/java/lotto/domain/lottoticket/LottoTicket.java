@@ -4,10 +4,7 @@ import lotto.domain.exception.DuplicateLottoNumbersException;
 import lotto.domain.exception.IllegalLottoSizeException;
 import lotto.domain.lottoticket.lottonumber.LottoNumber;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class LottoTicket {
 
@@ -15,8 +12,6 @@ public class LottoTicket {
     private final List<LottoNumber> lottoNumbers;
 
     private LottoTicket(final List<LottoNumber> lottoNumbers) {
-        // TODO: 05/12/2019 Collections.sort()
-
         if (mismatchLottoSize(lottoNumbers)) {
             throw new IllegalLottoSizeException();
         }
@@ -25,6 +20,7 @@ public class LottoTicket {
             throw new DuplicateLottoNumbersException();
         }
 
+        Collections.sort(lottoNumbers);
         this.lottoNumbers = lottoNumbers;
     }
 
