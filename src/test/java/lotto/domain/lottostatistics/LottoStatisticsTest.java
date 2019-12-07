@@ -49,4 +49,12 @@ class LottoStatisticsTest {
         double yield = lottoStatistics.calculateYield(LottoPurchaseAmount.from(14000L));
         assertThat(yield).isCloseTo(0.36, Offset.offset(0.009));
     }
+
+    @Test
+    void calculateYieldByPercent() {
+        LottoStatistics lottoStatistics = LottoStatistics.from(statistics);
+
+        double yield = lottoStatistics.calculateYieldByPercent(LottoPurchaseAmount.from(14000L));
+        assertThat(yield).isCloseTo(36, Offset.offset(0.9));
+    }
 }

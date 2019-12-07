@@ -1,5 +1,6 @@
 package lotto.view;
 
+import lotto.domain.LottoPurchaseAmount;
 import lotto.domain.lottostatistics.LottoRank;
 import lotto.domain.lottostatistics.LottoStatistics;
 import lotto.domain.lottoticket.PurchasedLottoTickets;
@@ -50,5 +51,9 @@ public class OutputView {
 
     private String createMessageForSecondLottoRank(final LottoRank lottoRank) {
         return LottoRank.SECOND.equals(lottoRank) ? ", 보너스 볼 일치" : "";
+    }
+
+    public void showYieldOfLottoWith(final LottoStatistics lottoStatistics, final LottoPurchaseAmount lottoPurchaseAmount) {
+        System.out.println(String.format("총 수익률은 %.2f%%입니다.", lottoStatistics.calculateYieldByPercent(lottoPurchaseAmount)));
     }
 }

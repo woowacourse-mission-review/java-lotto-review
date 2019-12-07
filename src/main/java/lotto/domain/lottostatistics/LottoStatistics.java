@@ -7,6 +7,7 @@ import java.util.Map;
 public class LottoStatistics {
 
     private static final long ERROR_VALUE_OF_CALCULATING_TOTAL_PRIZE = 0L;
+    private static final int NUMBER_FOR_PERCENT = 100;
     private Map<LottoRank, Long> statistics;
 
     private LottoStatistics(Map<LottoRank, Long> statistics) {
@@ -47,5 +48,10 @@ public class LottoStatistics {
 
     private double calculateYieldWithTotalPrize(final double totalPrize, final LottoPurchaseAmount lottoPurchaseAmount) {
         return totalPrize / lottoPurchaseAmount.getAmount();
+    }
+
+    public double calculateYieldByPercent(final LottoPurchaseAmount lottoPurchaseAmount) {
+        double yield = calculateYield(lottoPurchaseAmount);
+        return yield * NUMBER_FOR_PERCENT;
     }
 }

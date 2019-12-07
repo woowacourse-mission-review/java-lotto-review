@@ -48,6 +48,7 @@ public class LottoGameController {
             LottoStatistics lottoStatistics = lottoStatisticsFactory.calculateStatisticsWith(winningLotto, purchasedLottoTickets);
 
             outputView.show(lottoStatistics);
+            outputView.showYieldOfLottoWith(lottoStatistics, lottoPurchaseAmount);
 
         } catch (IllegalArgumentException e) {
             outputView.showMessageOfException(e);
