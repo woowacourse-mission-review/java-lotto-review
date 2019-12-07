@@ -26,9 +26,9 @@ public class LottoNo {
 
     public static LottoNo of(final int lottoNo) {
         if (lottoNo < MIN_LOTTO_NO || lottoNo > MAX_LOTTO_NO) {
-            return LOTTO_NO_POOL.get(lottoNo);
+            throw new InvalidRangeException();
         }
-        throw new InvalidRangeException();
+        return LOTTO_NO_POOL.get(lottoNo);
     }
 
     @Override
