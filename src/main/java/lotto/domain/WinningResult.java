@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
@@ -20,14 +21,15 @@ public class WinningResult {
         return result.getOrDefault(rank, DEFAULT_VALUE);
     }
 
-    public int getWinningMoney() {
+    public BigInteger getWinningMoney() {
         return Arrays.stream(Rank.values())
-                .mapToInt(rank -> rank.getWinningMoney() * result.get(rank))
-                .sum();
+                .map(rank -> BigInteger.valueOf(rank.getWinningMoney()).multiply(BigInteger.valueOf(result.get(rank))))
+                .reduce(BigInteger::add)
+                .get();
     }
 
-    public int getEarningsRate() {
+    public BigInteger getEarningsRate() {
         int lottoCount = result.values().stream().reduce(0, Integer::sum);
-        return getWinningMoney() / (LOTTO_PRICE * lottoCount);
+        return getWinningMoney().divide(BigInteger.valueOf(LOTTO_PRICE * lottoCount));
     }
 }
