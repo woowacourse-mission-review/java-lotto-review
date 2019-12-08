@@ -1,5 +1,6 @@
 package lotto.domain.factory;
 
+import lotto.domain.LottoMoney;
 import lotto.domain.LottoTicket;
 import lotto.domain.LottoTickets;
 import lotto.domain.LottoUtils;
@@ -16,9 +17,9 @@ public class LottoTicketsFactory {
         this.autoLottoTicketFactory = autoLottoTicketFactory;
     }
 
-    public LottoTickets create(final List<String> inputManualLottoTickets, final int countOfAutoLottoPurchase) {
+    public LottoTickets create(final List<String> inputManualLottoTickets, final LottoMoney lottoMoney) {
         final List<LottoTicket> manualLottoTickets = createManualLottoTickets(inputManualLottoTickets);
-        final List<LottoTicket> autoLottoTickets = createAutoLottoTickets(countOfAutoLottoPurchase);
+        final List<LottoTicket> autoLottoTickets = createAutoLottoTickets(lottoMoney.countOfPurchase() - manualLottoTickets.size());
         manualLottoTickets.addAll(autoLottoTickets);
 
         return LottoTickets.of(manualLottoTickets);
