@@ -51,7 +51,7 @@ class BudgetTest {
     @Test
     void get_count_of_affordable_lotto_purchasing_money() {
         Budget budget = Budget.of(2000);
-        assertEquals(budget.getAffordableLottoPurchasingMoney(), 2);
+        assertEquals(budget.getAffordableLottoPurchasingCount(), 2);
     }
 
     @DisplayName("pay() 메서드로부터 리턴된 Budget 객체의 금액이 줄어들었는지 확인")

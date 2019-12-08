@@ -20,26 +20,32 @@ public class Budget {
         }
     }
 
-    private static void validateAffordability(final int budget) {
+    private static void validateAffordabilityAtLeastOneLotto(final int budget) {
         if (budget < LOTTO_PRICE) {
             throw new NoMoneyException();
         }
     }
 
     public static Budget of(final int budget) {
-        validateAffordability(budget);
+        validateAffordabilityAtLeastOneLotto(budget);
         return new Budget(budget);
     }
 
-    public boolean canPurchaseLotto(final int sizeOfLotto) {
-        return budget > (LOTTO_PRICE * sizeOfLotto);
+    public void validateAffordabilityCountOf(final int sizeOFLotto) {
+        if (cannotPurchaseLotto(sizeOFLotto)) {
+            throw new NoMoneyException();
+        }
+    }
+
+    private boolean cannotPurchaseLotto(final int sizeOfLotto) {
+        return budget < (LOTTO_PRICE * sizeOfLotto);
     }
 
     public Budget pay(int sizeOfLotto) {
         return new Budget(budget - (LOTTO_PRICE * sizeOfLotto));
     }
 
-    public int getAffordableLottoPurchasingMoney() {
+    public int getAffordableLottoPurchasingCount() {
         return budget / LOTTO_PRICE;
     }
 
