@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class LottoTicket implements Iterable<LottoNumber> {
-    static final int COUNT_OF_LOTTO_NUMBERS = 6;
+    public static final int COUNT_OF_LOTTO_NUMBERS = 6;
     static final String NOT_MATCH_COUNT_OF_NUMBERS_MESSAGE = "로또 번호는 6개야 합니다.";
     static String DUPLICATE_NUMBERS_MESSAGE = "로또 번호는 중복될 수 없습니다.";
 
@@ -68,6 +68,19 @@ public class LottoTicket implements Iterable<LottoNumber> {
                 return lottoNumbers.get(cursor++);
             }
         };
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        final LottoTicket that = (LottoTicket) o;
+        return Objects.equals(lottoNumbers, that.lottoNumbers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(lottoNumbers);
     }
 
     @Override
