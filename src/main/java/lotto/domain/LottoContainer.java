@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 import java.util.Arrays;
@@ -16,8 +18,8 @@ public class LottoContainer {
     }
 
     public LottoContainer(final LottoContainer lottoContainer, final List<Lotto> lottos) {
-        this.lottos = lottos;
-        this.lottos.addAll(lottoContainer.lottos);
+        this.lottos = Collections.unmodifiableList(
+                Lists.newArrayList(Iterables.concat(lottos, lottoContainer.lottos)));
     }
 
     public WinningResult createResult(final WinningLotto winningLotto) {
