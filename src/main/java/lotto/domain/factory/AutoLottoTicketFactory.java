@@ -6,14 +6,13 @@ import lotto.domain.LottoTicket;
 
 import java.util.List;
 
-public class AutoLottoTicketFactory implements LottoTicketFactory {
+public class AutoLottoTicketFactory {
     private final ShuffleStrategy shuffleStrategy;
 
     public AutoLottoTicketFactory(final ShuffleStrategy shuffleStrategy) {
         this.shuffleStrategy = shuffleStrategy;
     }
 
-    @Override
     public LottoTicket create() {
         final List<LottoNumber> lottoNumbers = LottoNumberCollection.copy();
         final List<LottoNumber> shuffled = shuffleStrategy.shuffle(lottoNumbers);
