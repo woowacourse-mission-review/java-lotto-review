@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class LottoUtils {
 
-    private static final Pattern ONLY_INTEGER_PATTERN = Pattern.compile("^[0-9]$");
+    private static final Pattern ONLY_INTEGER_PATTERN = Pattern.compile("^[0-9]+$");
 
     private static final String LOTTO_NO_DELIMITER = ",";
     private static final String EMPTY_SPACE = " ";
