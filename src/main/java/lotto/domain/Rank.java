@@ -24,26 +24,31 @@ public enum Rank {
         this.isMatchBonus = isMatchBonus;
     }
 
-    // TODO: 2019/12/08 리팩토링
     public static Rank of(final int countOfMatch, final boolean isMatchBonus) {
         if (countOfMatch < RANK_MIN_COUNT) {
             return MISS;
         }
 
-        final List<Rank> ranks = Stream.of(values())
-                .filter(rank -> rank.countOfMatch == countOfMatch)
-                .collect(Collectors.toList());
+        final List<Rank> ranks = matchSame(countOfMatch);
 
         if (ranks.size() == 1) {
             return ranks.get(0);
         }
+        return matchSame(isMatchBonus, ranks);
+    }
 
+    private static List<Rank> matchSame(final int countOfMatch) {
+        return Stream.of(values())
+                .filter(rank -> rank.countOfMatch == countOfMatch)
+                .collect(Collectors.toList());
+    }
+
+    private static Rank matchSame(final boolean isMatchBonus, final List<Rank> ranks) {
         return ranks.stream()
                 .filter(rank -> rank.isMatchBonus == isMatchBonus)
                 .findAny()
                 .orElseThrow(UnsupportedOperationException::new);
     }
-
 
     public int multiplyPrize(final int number) {
         return this.prize * number;
