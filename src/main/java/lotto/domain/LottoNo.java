@@ -1,8 +1,10 @@
 package lotto.domain;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import lotto.exception.InvalidRangeException;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.IntStream;
@@ -30,6 +32,14 @@ public class LottoNo {
             throw new InvalidRangeException();
         }
         return LOTTO_NO_POOL.get(lottoNo);
+    }
+
+    static List<LottoNo> lottoNos() {
+        return Lists.newArrayList(LOTTO_NO_POOL.values());
+    }
+
+    public int no() {
+        return lottoNo;
     }
 
     @Override

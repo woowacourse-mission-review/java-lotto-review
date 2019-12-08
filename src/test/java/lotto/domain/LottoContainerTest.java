@@ -3,6 +3,7 @@ package lotto.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 
 import static lotto.domain.Rank.*;
@@ -28,8 +29,8 @@ class LottoContainerTest {
         assertEquals(winningResult.getCountOf(FIFTH), 2);
         assertEquals(winningResult.getCountOf(MISS), 0);
 
-        assertEquals(winningResult.getWinningMoney(), 1_510_000);
+        assertEquals(winningResult.getWinningMoney(), BigInteger.valueOf(1_510_000));
 
-        assertEquals(winningResult.getEarningsRate(), 503);
+        assertEquals(winningResult.getEarningsRate(), BigInteger.valueOf(503));
     }
 }

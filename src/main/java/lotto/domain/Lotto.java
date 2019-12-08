@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import lotto.exception.DuplicatedLottoNoException;
 import lotto.exception.InvalidLottoNoSizeException;
@@ -43,5 +44,9 @@ public class Lotto {
         return Math.toIntExact(lottoNos.stream()
                 .filter(lotto::contains)
                 .count());
+    }
+
+    public List<LottoNo> getLottoNos() {
+        return Lists.newArrayList(lottoNos);
     }
 }

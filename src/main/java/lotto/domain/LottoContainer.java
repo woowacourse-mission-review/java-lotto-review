@@ -37,4 +37,8 @@ public class LottoContainer {
                 .forEach(rank -> result.put(rank, 0));
         return result;
     }
+
+    public List<Lotto> getLottos() {
+        return Lists.newArrayList(lottos);
+    }
 }
