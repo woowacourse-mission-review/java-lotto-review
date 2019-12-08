@@ -11,37 +11,37 @@
 ### 1단계 To do
 
 - LottoMoney
-  - [ ] [예외사항] 1000 단위 확인
-
-  - [ ] [예외사항] Blank, Null 검사 
+  - [x] [예외사항] 1000 단위 확인
 
 - LottoNumber
 
-  - [ ] [예외사항] 1~45 범위 검사
-  - [ ] 캐싱하기
-  - [ ] Equals&HashCode
+  - [x] [예외사항] 1~45 범위 검사
+  - [x] 캐싱하기
+  - [x] Equals&HashCode
 
 - LottoTicket
 
-  - [ ] [예외사항] LottoNumber 6개 확인
-  - [ ] [예외사항] LottoNumber 중복 확인
-  - [ ] LottoNumber 오름차순 정렬 
-  - [ ] 다른 로또와 번호 일치 개수 구하기 
+  - [x] [예외사항] LottoNumber 6개 확인
+  - [x] [예외사항] LottoNumber 중복 확인
+  - [x] LottoNumber 오름차순 정렬 
+  - [x] 다른 로또와 번호 일치 개수 구하기 
+  - [x] 번호 포함하는지 확인 (보너스 확인용)
 
-- AutoLottoFactory
-  - [ ] LottoNumber 6개 랜덤으로 생성
+- AutoLottoTicketFactory
+  - [x] LottoNumber 6개 랜덤으로 생성
 
-- WinningLotto
+- WinningLottoTicket
 
-  - [ ] LottoTicket + BonusNumber 
-  - [ ] BonusNumber가 LottoTicket과 번호가 중복되는지 검사 
+  - [x] LottoTicket + BonusNumber 
+  - [x] BonusNumber가 LottoTicket과 번호가 중복되는지 검사 
+  - [x] 매치 결과로 Rank 반환 
 
 - Rank 
-  - [ ] 당첨 번호, 보너스 넘버 매칭 개수로 등수 구하기 
+  - [x] 당첨 번호, 보너스 넘버 매칭 개수로 등수 구하기 
 
 - Result
-  - [ ] 총 Rank 개수 
-  - [ ] 총 당첨 금액 및 수익률 계산
+  - [x] 총 Rank 개수 
+  - [x] 수익률 계산
 
 
 
