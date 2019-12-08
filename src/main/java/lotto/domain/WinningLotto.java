@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.Objects;
+
 public class WinningLotto {
     static final String BONUS_NUMBER_DUPLICATE_MESSAGE = "보너스 번호는 당첨 번호와 중복될 수 없습니다.";
 
@@ -8,8 +10,8 @@ public class WinningLotto {
 
     public WinningLotto(final LottoTicket lottoTicket, final LottoNumber bonusNumber) {
         validateDuplicate(lottoTicket, bonusNumber);
-        this.lottoTicket = lottoTicket;
-        this.bonusNumber = bonusNumber;
+        this.lottoTicket = Objects.requireNonNull(lottoTicket);
+        this.bonusNumber = Objects.requireNonNull(bonusNumber);
     }
 
     private void validateDuplicate(final LottoTicket lottoTicket, final LottoNumber bonusNumber) {

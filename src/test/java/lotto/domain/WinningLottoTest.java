@@ -22,6 +22,18 @@ class WinningLottoTest {
     }
 
     @Test
+    void 보너스번호_null_검사() {
+        final LottoTicket lottoTicket = LottoTicket.of(createLottoNumbers(1, 2, 3, 4, 5, 6));
+
+        assertThrows(NullPointerException.class, () -> WinningLotto.of(lottoTicket, null));
+    }
+
+    @Test
+    void LottoTicket_null_검사() {
+        assertThrows(NullPointerException.class, () -> WinningLotto.of(null, LottoNumber.of(5)));
+    }
+
+    @Test
     void Rank_반환_테스트() {
         // given
         final LottoTicket lottoTicket = LottoTicket.of(createLottoNumbers(1, 2, 3, 4, 5, 6));
