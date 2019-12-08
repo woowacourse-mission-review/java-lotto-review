@@ -3,7 +3,7 @@ package lotto.domain;
 import java.util.Objects;
 
 public class LottoMoney {
-    private static final int PRICE_PER_LOTTO_TICKET = 1000;
+    static final int PRICE_PER_LOTTO_TICKET = 1000;
     static final String INVALID_PRICE_EXCEPTION_MESSAGE = "로또 구입 금액은 " + PRICE_PER_LOTTO_TICKET + "원 단위로 입력해야 합니다.";
 
     private final int value;
@@ -25,6 +25,10 @@ public class LottoMoney {
 
     public int value() {
         return value;
+    }
+
+    public int countOfPurchase() {
+        return value / PRICE_PER_LOTTO_TICKET;
     }
 
     @Override
