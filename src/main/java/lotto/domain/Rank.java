@@ -8,6 +8,11 @@ public enum Rank {
     FIFTH(3, 5_000), // 5등
     MISS(0, 0);
 
+    public static final String INVALID_FIRST_MATCH_EXCEPTION_MESSAGE =
+            String.format("%d개의 번호 일치와 보너스볼 일치는 유효하지 않습니다.", FIRST.countOfMatch);
+    public static final String INVALID_COUNT_OF_MATCH_EXCEPTION_MESSAGE =
+            String.format("%d는 유효하지 않은 값입니다.", FIRST.countOfMatch);
+
     private static final int WINNING_MIN_COUNT = 3;
 
     private int countOfMatch;
@@ -19,7 +24,11 @@ public enum Rank {
     }
 
     public static Rank valueOf(int countOfMatch, boolean matchBonus) {
-        if (countOfMatch < WINNING_MIN_COUNT) {
+        if (countOfMatch == FIRST.countOfMatch && matchBonus) {
+            throw new IllegalArgumentException(INVALID_FIRST_MATCH_EXCEPTION_MESSAGE);
+        }
+
+        if (countOfMatch < WINNING_MIN_COUNT && countOfMatch >= 0) {
             return MISS;
         }
 
@@ -33,7 +42,7 @@ public enum Rank {
             }
         }
 
-        throw new IllegalArgumentException(countOfMatch + "는 유효하지 않은 값입니다.");
+        throw new IllegalArgumentException(INVALID_COUNT_OF_MATCH_EXCEPTION_MESSAGE);
     }
 
     public int getCountOfMatch() {
