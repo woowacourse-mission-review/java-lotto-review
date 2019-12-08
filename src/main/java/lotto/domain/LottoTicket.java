@@ -85,6 +85,6 @@ public class LottoTicket implements Iterable<LottoNumber> {
 
     @Override
     public String toString() {
-        return "LottoTicket{" + lottoNumbers + '}';
+        return String.valueOf(lottoNumbers);
     }
 }
