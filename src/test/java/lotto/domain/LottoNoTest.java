@@ -37,6 +37,14 @@ class LottoNoTest {
         assertEquals(e.getMessage(), INVALID_RANGE_EXCEPTION_MESSAGE);
     }
 
+    @DisplayName("객체를 불러올 때 입력한 값과 객체 안에 저장된 값이 같은지")
+    @Test
+    void lotto_no_getter() {
+        int expectedLottoNo = MIN_LOTTO_NO;
+        LottoNo lottoNo = LottoNo.of(expectedLottoNo);
+        assertSame(expectedLottoNo, lottoNo.no());
+    }
+
     @DisplayName("같은 숫자로 입력했을 때 같은 객체를 꺼내오는지")
     @Test
     void assert_same_object_between_same_number() {

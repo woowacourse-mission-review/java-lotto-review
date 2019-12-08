@@ -5,6 +5,8 @@ import lotto.exception.InvalidLottoNoSizeException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static lotto.exception.DuplicatedLottoNoException.DUPLICATED_LOTTO_NO_EXCEPTION_MESSAGE;
 import static lotto.exception.InvalidLottoNoSizeException.INVALID_LOTTO_NO_SIZE_EXCEPTION_MESSAGE;
 import static lotto.utils.LottoUtils.parse;
@@ -54,5 +56,14 @@ class LottoTest {
     void not_contains_certain_lotto_no() {
         Lotto lotto = Lotto.of(parse(1, 2, 3, 4, 5, 6));
         assertFalse(lotto.contains(LottoNo.of(7)));
+    }
+
+    @DisplayName("getLottos로 꺼내온 번호들이 입력할 때 받은 값들인지")
+    @Test
+    void getter() {
+        int[] params = {1, 2, 3, 4, 5, 6};
+        List<LottoNo> lottoNos = parse(params);
+        Lotto lotto = Lotto.of(parse(params));
+        lotto.getLottoNos().containsAll(lottoNos);
     }
 }
