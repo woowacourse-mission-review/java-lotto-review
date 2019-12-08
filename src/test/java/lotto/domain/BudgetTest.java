@@ -36,14 +36,15 @@ class BudgetTest {
     @Test
     void can_buy_lotto_if_budget_more_than_purchasing_money() {
         Budget budget = Budget.of(4001);
-        assertTrue(budget.canPurchaseLotto(4));
+        assertDoesNotThrow(() -> budget.validateAffordabilityCountOf(4));
     }
 
     @DisplayName("Budget 의 돈보다 큰 수의 로또 구매 갯수를 입력하는 경우 로또를 살 수 없는지")
     @Test
     void cannot_buy_lotto_if_budget_less_than_purchasing_money() {
         Budget budget = Budget.of(4999);
-        assertFalse(budget.canPurchaseLotto(5));
+        NoMoneyException e = assertThrows(NoMoneyException.class, () -> budget.validateAffordabilityCountOf(5));
+        assertEquals(e.getMessage(), NO_MONEY_EXCEPTION_MESSAGE);
     }
 
     @DisplayName("구입 가능한 로또의 갯수")
