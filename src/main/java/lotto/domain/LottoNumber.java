@@ -1,9 +1,6 @@
 package lotto.domain;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
-import java.util.stream.IntStream;
 
 public class LottoNumber {
     static final int MIN_BOUNDARY = 1;
@@ -24,8 +21,8 @@ public class LottoNumber {
     }
 
     public static LottoNumber of(final int value) {
-        if (LottoNumberCache.CACHE.containsKey(value)) {
-            return LottoNumberCache.CACHE.get(value);
+        if (LottoNumberCollection.containsKey(value)) {
+            return LottoNumberCollection.get(value);
         }
         return new LottoNumber(value);
     }
@@ -50,16 +47,5 @@ public class LottoNumber {
     @Override
     public String toString() {
         return String.valueOf(value);
-    }
-
-    private static class LottoNumberCache {
-        private static final int LOW = 1;
-        private static final int HIGH = 45;
-        static final Map<Integer, LottoNumber> CACHE = new HashMap<>();
-
-        static {
-            IntStream.range(LOW, HIGH).forEach(number -> CACHE.put(number, LottoNumber.of(number)));
-        }
-
     }
 }
