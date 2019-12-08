@@ -45,6 +45,10 @@ public enum Rank {
     }
 
 
+    public int multiplyPrize(final int number) {
+        return this.prize * number;
+    }
+
     public int getCountOfMatch() {
         return countOfMatch;
     }

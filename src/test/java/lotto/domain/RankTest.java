@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -41,5 +42,13 @@ class RankTest {
                 Arguments.of(Rank.FIFTH, 3, false),
                 Arguments.of(Rank.MISS, 2, false)
         );
+    }
+
+    @Test
+    void multiplyPrize() {
+        final int expected = Rank.FIFTH.getPrize() * 3;
+        final int actual = Rank.FIFTH.multiplyPrize(3);
+
+        assertThat(actual).isEqualTo(expected);
     }
 }
