@@ -41,7 +41,7 @@ class ResultTest {
         // given
         final LottoMoney lottoMoney = LottoMoney.of(10000);
         final int totalOfPrize = Stream.of(Rank.values()).map(Rank::getPrize).reduce(0, Integer::sum);
-        final double expected = (double) totalOfPrize / lottoMoney.value();
+        final double expected = (double) totalOfPrize / lottoMoney.value() * 100;
 
         // when
         final double actual = result.calculateReturnOfRate(lottoMoney);

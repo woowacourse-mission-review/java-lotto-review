@@ -29,6 +29,6 @@ public class Result {
                 .map(rank -> rank.multiplyPrize(countOfRanks.get(rank)))
                 .reduce(0, Integer::sum);
 
-        return (double) totalOfPrize / lottoMoney.value();
+        return (double) totalOfPrize / lottoMoney.value() * 100;
     }
 }
