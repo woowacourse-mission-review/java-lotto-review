@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class LotteryNumbers {
     public static final int NUM_OF_LOTTERY_NUMBERS = 6;
@@ -30,5 +31,18 @@ public class LotteryNumbers {
 
     public static LotteryNumbers of(List<LotteryNumber> numbers) {
         return new LotteryNumbers(numbers);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LotteryNumbers that = (LotteryNumbers) o;
+        return Objects.equals(numbers, that.numbers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numbers);
     }
 }
