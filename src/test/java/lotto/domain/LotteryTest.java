@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import lotto.domain.lottery.Lottery;
+import lotto.domain.lottery.LotteryNumber;
+import lotto.domain.lottery.LotteryNumbers;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

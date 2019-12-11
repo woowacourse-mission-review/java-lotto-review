@@ -1,4 +1,6 @@
-package lotto.domain;
+package lotto.domain.money;
+
+import lotto.domain.lottery.InvalidLotteryBuyingMoneyException;
 
 public class LotteryBuyingMoney {
     private static final long LOTTERY_PRICE = 1000L;

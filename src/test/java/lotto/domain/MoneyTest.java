@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.domain.money.Money;
+import lotto.domain.money.MoneyLowerThanZeroException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
