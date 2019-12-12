@@ -1,9 +1,5 @@
-package lotto.domain;
+package lotto.domain.lottery;
 
-import lotto.domain.lottery.DuplicatedLotteryNumbersException;
-import lotto.domain.lottery.InvalidLotteryNumbersException;
-import lotto.domain.lottery.LotteryNumber;
-import lotto.domain.lottery.LotteryNumbers;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

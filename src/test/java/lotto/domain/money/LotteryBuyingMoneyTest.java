@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.money;
 
 import lotto.domain.lottery.InvalidLotteryBuyingMoneyException;
 import lotto.domain.money.LotteryBuyingMoney;

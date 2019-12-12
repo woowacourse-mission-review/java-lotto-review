@@ -22,14 +22,14 @@
     - [x] 생성자의 인자로 정수 리스트를 입력받는다. (외부 애그리거트와의 용이한 소통을 위함)
     - [x] equals & hashcode 는 추가하지 않는다. 두 로또 복권의 번호가 같더라도 다른 로또일 수 있기 때문이다.
 - LotteryFactory
-    - [ ] 자동 로또를 하나 발급한다.
-    - [ ] 번호를 입력받아 수동 로또를 발급한다.
+    - [x] 자동 로또를 하나 발급한다.
+    - [x] 번호를 입력받아 수동 로또를 발급한다.
 - LotteryCreationStrategy
-    - [ ] createNumbers(): LotteryNumbers
+    - [x] createNumbers(): LotteryNumbers
 - RandomLotteryCreationStrategy
-    - [ ] 난수 발생을 이용하여 로또 번호를 생성한다.
-- ManualLotteryCreationStrategy
-    - [ ] 생성자의 인자로 번호들을 입력받고, 그대로 로또 번호를 생성한다.
+    - [x] 난수 발생을 이용하여 로또 번호를 생성한다.
+- ~~ManualLotteryCreationStrategy~~
+    - ~~[ ] 생성자의 인자로 번호들을 입력받고, 그대로 로또 번호를 생성한다.~~
 - WinningLottery
     - [ ] 로또 1 장과 보너스 번호 1 개를 인스턴스 변수로 갖는다.
     - [ ] 로또를 인자로 받아 로또를 평가해 Rank 를 반환한다.

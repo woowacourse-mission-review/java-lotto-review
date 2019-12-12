@@ -18,6 +18,10 @@ public class Lottery {
         ));
     }
 
+    public static Lottery from(LotteryCreationStrategy strategy) {
+       return new Lottery(LotteryNumbers.of(strategy.create()));
+    }
+
     public LotteryNumbers getNumbers() {
         return numbers;
     }
