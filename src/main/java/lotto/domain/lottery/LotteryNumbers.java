@@ -8,10 +8,14 @@ public class LotteryNumbers {
     public static final int NUM_OF_LOTTERY_NUMBERS = 6;
     private final List<LotteryNumber> numbers;
 
-    public LotteryNumbers(List<LotteryNumber> numbers) {
+    private LotteryNumbers(List<LotteryNumber> numbers) {
         this.numbers = new ArrayList<>(numbers);
         validateCountOfNumbers(this.numbers);
         validateNoDuplicationInNumbers(this.numbers);
+    }
+
+    public static LotteryNumbers of(List<LotteryNumber> numbers) {
+        return new LotteryNumbers(numbers);
     }
 
     private void validateCountOfNumbers(List<LotteryNumber> numbers) {
@@ -29,8 +33,14 @@ public class LotteryNumbers {
         }
     }
 
-    public static LotteryNumbers of(List<LotteryNumber> numbers) {
-        return new LotteryNumbers(numbers);
+    public boolean has(LotteryNumber bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
+
+    public int matches(Lottery another) {
+        return (int) numbers.stream()
+                .filter(another::has)
+                .count();
     }
 
     @Override

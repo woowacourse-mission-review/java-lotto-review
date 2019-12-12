@@ -25,4 +25,12 @@ public class Lottery {
     public LotteryNumbers getNumbers() {
         return numbers;
     }
+
+    public boolean has(LotteryNumber bonusNumber) {
+        return numbers.has(bonusNumber);
+    }
+
+    public int matches(Lottery another) {
+        return numbers.matches(another);
+    }
 }
